@@ -151,7 +151,7 @@ local Button = tp:CreateButton({
 
 
 local Toggle = Main:CreateToggle({
-   Name = "Авто Фарм Камней ХУЙНЯ",
+   Name = "Авто Фарм Камней (НЕ ГОТОВ)",
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
@@ -202,5 +202,68 @@ local Toggle = Main:CreateToggle({
 					end
 				end
 		end
+   end,
+})
+
+
+
+
+
+local function TeleportItemsToPlayer()
+  local Players = game:GetService("Players")
+  local LocalPlayer = Players.LocalPlayer
+  local Character = LocalPlayer.Character
+  local ItemsFolder = workspace:FindFirstChild("Items")
+
+  if not Character then
+    warn("Персонаж игрока не найден.")
+    return
+  end
+
+  local DistanceInFront = 5
+  local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+
+  if not HumanoidRootPart then
+    warn("HumanoidRootPart не найден у персонажа.")
+    return
+  end
+
+  local ItemsOnly = {
+    ['Iron'] = true,
+    ['Oak Log'] = true,
+    ['Pink Oak Log'] = true,
+    ['Platinum'] = true,
+    ['Ruby'] = true,
+    ['Sapphire'] = true,
+    ['Silver'] = true,
+    ['Spruce Log'] = true,
+    ['Tin'] = true,
+    ['Topaz'] = true,
+    ['Coal'] = true
+  }
+
+  local TargetPosition = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
+
+  if ItemsFolder then
+    for _, Item in pairs(ItemsFolder:GetChildren()) do
+      if Item:IsA("BasePart") or Item:IsA("Model") then
+        if ItemsOnly[Item.Name] then
+          Item:PivotTo(TargetPosition)
+        end
+      end
+    end
+  else
+    warn("Папка 'Items' не найдена в workspace.")
+  end
+end
+
+
+
+
+
+local Button = Main:CreateButton({
+   Name = "Тп предметы (есть список + Лаги из за огромного количества + другим игрокам не видно тебе видно и ты можешь брать вещи)",
+   Callback = function()
+	TeleportItemsToPlayer()
    end,
 })
