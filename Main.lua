@@ -277,6 +277,8 @@ local Button = Items:CreateButton({
 
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ---------------------------------------------------------------------------------------------
 
+--[[
+
 local Button = Items:CreateButton({
    Name = "Oak Log",
    Callback = function()
@@ -344,3 +346,4 @@ local Button = Items:CreateButton({
 	end
    end,
 })
+--]]
