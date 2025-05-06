@@ -384,6 +384,7 @@ local function createItemTeleportButton(itemName)
 end
 
 -- Create buttons for each item using the helper function
+----------------------------------------------------------ДЕРЕВО---------------------------------------------
 createItemTeleportButton("Oak Log")
 createItemTeleportButton("Charred Oak Log")
 createItemTeleportButton("Metallic Oak Log")
@@ -394,6 +395,7 @@ createItemTeleportButton("Spruce Log")
 createItemTeleportButton("Burning Log")
 createItemTeleportButton("Mega Log")
 createItemTeleportButton("Sparkle Time Acorn")
+----------------------------------------------------------КАМЕНЬ И ТД---------------------------------------------
 createItemTeleportButton("Coal")
 createItemTeleportButton("Copper")
 createItemTeleportButton("Copper Bar")
