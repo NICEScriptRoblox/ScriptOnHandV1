@@ -335,6 +335,13 @@ Items:CreateButton({
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ | ДЕРЕВЬЕВ ---------------------------------------------------------------------------------------------
 
 
+Items:CreateButton({
+   Name = "Te",
+   Callback = function()
+    TeleportItemsToPlayer()
+   end,
+})
+
 local function createItemTeleportButton(itemName)
     Items:CreateButton({
        Name = itemName,
