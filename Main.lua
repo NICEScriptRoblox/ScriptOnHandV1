@@ -321,7 +321,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Oak Log" then -- Corrected this line
                         if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -352,7 +352,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Charred Oak Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -384,7 +384,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Metallic Oak Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -415,7 +415,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Pink Oak Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -447,7 +447,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Dark Oak Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -479,7 +479,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Miniature Oak Tree" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -511,7 +511,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Spruce Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -543,7 +543,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Burning Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -575,7 +575,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Mega Log" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -607,7 +607,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Sparkle Time Acorn" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -643,7 +643,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Coal" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -674,7 +674,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Copper" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -705,7 +705,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Copper Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -736,7 +736,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Iron" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -767,7 +767,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Iron Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -798,7 +798,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Tungsten" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -829,7 +829,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Sparkle Time Acorn" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -860,7 +860,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Tungsten Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -891,7 +891,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Lead" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -922,7 +922,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Lead Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -953,7 +953,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Tin" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -984,7 +984,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Tin Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1015,7 +1015,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Silver" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1046,7 +1046,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Silver Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1077,7 +1077,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Platinum" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1108,7 +1108,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Platinum Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1139,7 +1139,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Gold" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1170,7 +1170,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Gold Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1201,7 +1201,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Demonium" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1232,7 +1232,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Demonium Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1263,7 +1263,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Holyum" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1294,7 +1294,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Holyum Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1325,7 +1325,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Corrupted Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1356,7 +1356,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "True Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1387,7 +1387,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "False Bar" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1418,7 +1418,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Amythest" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1449,7 +1449,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Ruby" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1480,7 +1480,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Sapphire" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1511,7 +1511,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Topaz" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1542,7 +1542,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Diamond" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1573,7 +1573,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Emerald" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1604,7 +1604,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Sparkle Time Coal" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1635,7 +1635,7 @@ local Button = Items:CreateButton({
         if ItemsFolder then
             for _, Item in pairs(ItemsFolder:GetChildren()) do
                 if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == Name then
+                    if Item.Name == "Atom" then -- Corrected this line
                          if Item:IsA("Model") and Item.PrimaryPart then
                             Item:SetPrimaryPartCFrame(TargetCFrame)
                         elseif Item:IsA("BasePart") then
@@ -1647,4 +1647,3 @@ local Button = Items:CreateButton({
         end
     end
 })
-
