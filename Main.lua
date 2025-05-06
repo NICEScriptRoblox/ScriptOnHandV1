@@ -303,6 +303,8 @@ local Button = Items:CreateButton({
 
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ | ДЕРЕВЬЕВ ---------------------------------------------------------------------------------------------
 
+local Label = Tab:CreateLabel("Деревья", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+
 local Button = Items:CreateButton({
    Name = "Oak Log",
    Callback = function()
@@ -622,6 +624,7 @@ local Button = Items:CreateButton({
 
 
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ | КАМЕНЬ И ТД ---------------------------------------------------------------------------------------------
+local Label = Tab:CreateLabel("Камень и тд", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 
 
 
