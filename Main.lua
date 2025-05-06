@@ -36,6 +36,11 @@ local Window = Rayfield:CreateWindow({
 
 local Main = Window:CreateTab("Основное", 4483362458)
 local tp = Window:CreateTab("Телепорт", 4483362458)
+local Items = Window:CreateTab("Телепорт Предметов", 4483362458)
+
+
+
+--------------------------------------------------------------------------------------------- ТП ПО ЛОКАМ ---------------------------------------------------------------------------------------------
 
 local Button = tp:CreateButton({
    Name = "Магазин 1",
@@ -146,7 +151,7 @@ local Button = tp:CreateButton({
 
 
 
-
+--------------------------------------------------------------------------------------------- АФТО ФАРМ ---------------------------------------------------------------------------------------------
 
 
 
@@ -208,7 +213,7 @@ local Toggle = Main:CreateToggle({
 
 
 
-
+--------------------------------------------------------------------------------------------- ФУНКЦИЯ ТП ВСЕХ ПРЕДМЕТОВ ---------------------------------------------------------------------------------------------
 local function TeleportItemsToPlayer()
   local Players = game:GetService("Players")
   local LocalPlayer = Players.LocalPlayer
@@ -258,12 +263,48 @@ local function TeleportItemsToPlayer()
 end
 
 
+--------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ВСЕХ ---------------------------------------------------------------------------------------------
 
 
-
-local Button = Main:CreateButton({
-   Name = "Тп предметы (есть список + Лаги из за огромного количества + другим игрокам не видно тебе видно и ты можешь брать вещи)",
+local Button = Items:CreateButton({
+   Name = "Тп предметы Все",
    Callback = function()
 	TeleportItemsToPlayer()
+   end,
+})
+
+
+
+--------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ---------------------------------------------------------------------------------------------
+
+local Button = Items:CreateButton({
+   Name = "Oak Log",
+   Callback = function()
+  	local Character = game:GetService("Players").LocalPlayer.Character
+  	local ItemsFolder = workspace:FindFirstChild("Items")
+
+  	if not Character then return end
+
+  	local DistanceInFront = 5
+ 	local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+
+  	if not HumanoidRootPart then return end
+			
+	  local ItemsOnly = {
+	    ['Oak Log'] = true,
+	  }
+
+	local TargetPosition = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
+
+	  if ItemsFolder then
+	    for _, Item in pairs(ItemsFolder:GetChildren()) do
+	      if Item:IsA("BasePart") or Item:IsA("Model") then
+	        if ItemsOnly[Item.Name] then
+	          Item:PivotTo(TargetPosition)
+	        end
+	      end
+	    end
+	  end
+	end
    end,
 })
