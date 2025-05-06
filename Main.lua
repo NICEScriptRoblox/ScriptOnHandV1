@@ -17,7 +17,7 @@ local Window = Rayfield:CreateWindow({
    },
 
    Discord = {
-      Enabled = false, 
+      Enabled = false,
       Invite = "noinvitelink",
       RememberJoins = true
    },
@@ -30,7 +30,7 @@ local Window = Rayfield:CreateWindow({
       FileName = "Key",
       SaveKey = true,
       GrabKeyFromSite = false,
-      Key = {"Hello"} 
+      Key = {"Hello"}
    }
 })
 
@@ -38,180 +38,204 @@ local Main = Window:CreateTab("Основное", 4483362458)
 local tp = Window:CreateTab("Телепорт", 4483362458)
 local Items = Window:CreateTab("Телепорт Предметов", 4483362458)
 
-
-
---------------------------------------------------------------------------------------------- ТП ПО ЛОКАМ --------------------------------------------------------------------------------------------- 
+--------------------------------------------------------------------------------------------- ТП ПО ЛОКАМ ---------------------------------------------------------------------------------------------
 
 local Button = tp:CreateButton({
    Name = "Магазин 1",
    Callback = function()
-	game.Players.localPlayer.Character:MoveTo(Vector3.new(-237.5,82,665))
+        -- Check if the character and HumanoidRootPart exist before attempting to move
+        local character = game.Players.localPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character:MoveTo(Vector3.new(-237.5,82,665))
+        else
+            warn("Character or HumanoidRootPart not found for Магазин 1 TP.")
+        end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "Магазин 2",
    Callback = function()
-	game.Players.localPlayer.Character:MoveTo(Vector3.new(1016,321.5,78))
+        -- Check if the character and HumanoidRootPart exist before attempting to move
+        local character = game.Players.localPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character:MoveTo(Vector3.new(1016,321.5,78))
+        else
+            warn("Character or HumanoidRootPart not found for Магазин 2 TP.")
+        end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "error",
    Callback = function()
-	game.Players.localPlayer.Character:MoveTo(Vector3.new(-564,1022,286))
+        -- Check if the character and HumanoidRootPart exist before attempting to move
+        local character = game.Players.localPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character:MoveTo(Vector3.new(-564,1022,286))
+        else
+            warn("Character or HumanoidRootPart not found for error TP.")
+        end
    end,
 })
-
-
 
 local Button = tp:CreateButton({
    Name = "Грибной остров",
    Callback = function()
-	game.Players.localPlayer.Character:MoveTo(Vector3.new(-1859,625,275))
+        -- Check if the character and HumanoidRootPart exist before attempting to move
+        local character = game.Players.localPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character:MoveTo(Vector3.new(-1859,625,275))
+        else
+            warn("Character or HumanoidRootPart not found for Грибной остров TP.")
+        end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "Большое дерево",
    Callback = function()
-	game.Players.localPlayer.Character:MoveTo(Vector3.new(-875,376,-475))
+        -- Check if the character and HumanoidRootPart exist before attempting to move
+        local character = game.Players.localPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character:MoveTo(Vector3.new(-875,376,-475))
+        else
+            warn("Character or HumanoidRootPart not found for Большое дерево TP.")
+        end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "Трейд зона",
    Callback = function()
-	game.Players.localPlayer.Character:MoveTo(Vector3.new(497,246,237))
+        -- Check if the character and HumanoidRootPart exist before attempting to move
+        local character = game.Players.localPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character:MoveTo(Vector3.new(497,246,237))
+        else
+            warn("Character or HumanoidRootPart not found for Трейд зона TP.")
+        end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "Меторит 1 (ЕСЛИ ЕСТЬ)",
    Callback = function()
-  		local mine = workspace:FindFirstChild("small mine1", true) 
+        local mine = workspace:FindFirstChild("small mine1", true)
+        local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-        if mine then
+        if mine and humanoidRootPart then
             local pickaxe = mine:FindFirstChild("Pickaxe", true)
-
             if pickaxe then
-                local humanoidRootPart = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                if humanoidRootPart then
-                    humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
-                end
+                humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
+            else
+                warn("Pickaxe not found in small mine1.")
             end
+        else
+            warn("small mine1 or HumanoidRootPart not found for Меторит 1 TP.")
         end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "Меторит 2 (ЕСЛИ ЕСТЬ)",
    Callback = function()
-		local mine = workspace:FindFirstChild("small mine2", true) 
+        local mine = workspace:FindFirstChild("small mine2", true)
+        local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-        if mine then
+        if mine and humanoidRootPart then
             local pickaxe = mine:FindFirstChild("Pickaxe", true)
-
             if pickaxe then
-                local humanoidRootPart = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                if humanoidRootPart then
-                    humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
-                end
+                humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
+            else
+                warn("Pickaxe not found in small mine2.")
             end
+        else
+            warn("small mine2 or HumanoidRootPart not found for Меторит 2 TP.")
         end
    end,
 })
-
 
 local Button = tp:CreateButton({
    Name = "Меторит 3 (ЕСЛИ ЕСТЬ)",
    Callback = function()
-        local mine = workspace:FindFirstChild("small mine3", true) 
+        local mine = workspace:FindFirstChild("small mine3", true)
+        local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-        if mine then
+        if mine and humanoidRootPart then
             local pickaxe = mine:FindFirstChild("Pickaxe", true)
-
             if pickaxe then
-                local humanoidRootPart = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                if humanoidRootPart then
-                    humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
-                end
+                humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
+            else
+                warn("Pickaxe not found in small mine3.")
             end
+        else
+            warn("small mine3 or HumanoidRootPart not found for Меторит 3 TP.")
         end
-
    end,
 })
 
-
-
-
 --------------------------------------------------------------------------------------------- АФТО ФАРМ ---------------------------------------------------------------------------------------------
 
-
+local autoFarmRocksEnabled = false
+local autoFarmRocksConnection = nil
 
 local Toggle = Main:CreateToggle({
    Name = "Авто Фарм Камней (НЕ ГОТОВ)",
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
-		while true do
-			wait(5)
-			if Value == false then
-				local mine = workspace:FindFirstChild("Mine", true) 
+        autoFarmRocksEnabled = Value
+        if autoFarmRocksEnabled and autoFarmRocksConnection == nil then
+            autoFarmRocksConnection = game:GetService("RunService").Stepped:Connect(function()
+                if autoFarmRocksEnabled then
+                    local mine = workspace:FindFirstChild("Mine", true)
+                    local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-				if mine then
-					local pickaxe = mine:FindFirstChild("Pickaxe", true)
-
-					if pickaxe then
-						local humanoidRootPart = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-						if humanoidRootPart then
-							humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
-						end
-					end
-				end
-			end
-		end
+                    if mine and humanoidRootPart then
+                        local pickaxe = mine:FindFirstChild("Pickaxe", true)
+                        if pickaxe then
+                            humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
+                        end
+                    end
+                end
+            end)
+        elseif not autoFarmRocksEnabled and autoFarmRocksConnection then
+            autoFarmRocksConnection:Disconnect()
+            autoFarmRocksConnection = nil
+        end
    end,
 })
 
-
-
-
-
-
+local autoFarmCleanerEnabled = false
+local autoFarmCleanerConnection = nil
 
 local Toggle = Main:CreateToggle({
    Name = "Авто Фарм уборшик",
    CurrentValue = false,
-   Flag = "Toggle1",
+   Flag = "Toggle2", -- Changed flag to be unique
    Callback = function(Value)
+        autoFarmCleanerEnabled = Value
+        if autoFarmCleanerEnabled and autoFarmCleanerConnection == nil then
+            autoFarmCleanerConnection = game:GetService("RunService").Stepped:Connect(function()
+                if autoFarmCleanerEnabled then
+                    local mine = workspace:FindFirstChild("Dust", true)
+                    local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-		while true do
-			wait(1)
-				local mine = workspace:FindFirstChild("Dust", true) 
-
-				if mine then
-					local Part = mine:FindFirstChild("Part", true)
-
-					if Part then
-						local humanoidRootPart = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-						if humanoidRootPart then
-							humanoidRootPart.CFrame = Part.CFrame + Vector3.new(0, 2, 0)
-						end
-					end
-				end
-		end
+                    if mine and humanoidRootPart then
+                        local Part = mine:FindFirstChild("Part", true)
+                        if Part then
+                            humanoidRootPart.CFrame = Part.CFrame + Vector3.new(0, 2, 0)
+                        end
+                    end
+                end
+            end)
+        elseif not autoFarmCleanerEnabled and autoFarmCleanerConnection then
+            autoFarmCleanerConnection:Disconnect()
+            autoFarmCleanerConnection = nil
+        end
    end,
 })
-
-
-
 
 --------------------------------------------------------------------------------------------- ФУНКЦИЯ ТП ВСЕХ ПРЕДМЕТОВ ---------------------------------------------------------------------------------------------
 local function TeleportItemsToPlayer()
@@ -247,13 +271,19 @@ local function TeleportItemsToPlayer()
     ['Coal'] = true
   }
 
-  local TargetPosition = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
+  -- Calculate the target position based on the player's CFrame
+  local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
 
   if ItemsFolder then
     for _, Item in pairs(ItemsFolder:GetChildren()) do
       if Item:IsA("BasePart") or Item:IsA("Model") then
         if ItemsOnly[Item.Name] then
-          Item:PivotTo(TargetPosition)
+          -- Use :SetPrimaryPartCFrame() for Models, :SetCFrame() for BaseParts
+          if Item:IsA("Model") and Item.PrimaryPart then
+              Item:SetPrimaryPartCFrame(TargetCFrame)
+          elseif Item:IsA("BasePart") then
+              Item.CFrame = TargetCFrame
+          end
         end
       end
     end
@@ -262,85 +292,75 @@ local function TeleportItemsToPlayer()
   end
 end
 
-
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ВСЕХ ---------------------------------------------------------------------------------------------
-
 
 local Button = Items:CreateButton({
    Name = "Тп предметы Все",
    Callback = function()
-	TeleportItemsToPlayer()
+    TeleportItemsToPlayer()
    end,
 })
-
-
 
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ---------------------------------------------------------------------------------------------
 
 local Button = Items:CreateButton({
    Name = "Oak Log",
    Callback = function()
-  	local Character = game:GetService("Players").LocalPlayer.Character
-  	local ItemsFolder = workspace:FindFirstChild("Items")
+        local Character = game:GetService("Players").LocalPlayer.Character
+        local ItemsFolder = workspace:FindFirstChild("Items")
 
-  	if not Character then return end
+        if not Character then return end
 
-  	local DistanceInFront = 5
- 	local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+        local DistanceInFront = 5
+        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
-  	if not HumanoidRootPart then return end
-			
-	  local ItemsOnly1 = {
-	    ['Oak Log'] = true,
-	  }
+        if not HumanoidRootPart then return end
 
-	local TargetPosition = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
+        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
 
-	  if ItemsFolder then
-	    for _, Item in pairs(ItemsFolder:GetChildren()) do
-	      if Item:IsA("BasePart") or Item:IsA("Model") then
-	        if ItemsOnly1[Item.Name] then
-	          Item:PivotTo(TargetPosition)
-	        end
-	      end
-	    end
-	  end
-	end
-   end,
+        if ItemsFolder then
+            for _, Item in pairs(ItemsFolder:GetChildren()) do
+                if Item:IsA("BasePart") or Item:IsA("Model") then
+                    if Item.Name == 'Oak Log' then
+                        if Item:IsA("Model") and Item.PrimaryPart then
+                            Item:SetPrimaryPartCFrame(TargetCFrame)
+                        elseif Item:IsA("BasePart") then
+                            Item.CFrame = TargetCFrame
+                        end
+                    end
+                end
+            end
+        end
+    end
 })
-
-
-
-
 
 local Button = Items:CreateButton({
    Name = "Pink Oak Log",
    Callback = function()
-  	local Character = game:GetService("Players").LocalPlayer.Character
-  	local ItemsFolder = workspace:FindFirstChild("Items")
+        local Character = game:GetService("Players").LocalPlayer.Character
+        local ItemsFolder = workspace:FindFirstChild("Items")
 
-  	if not Character then return end
+        if not Character then return end
 
-  	local DistanceInFront = 5
- 	local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+        local DistanceInFront = 5
+        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
-  	if not HumanoidRootPart then return end
-			
-	  local ItemsOnly2 = {
-	    ['Pink Oak Log'] = true,
-	  }
+        if not HumanoidRootPart then return end
 
-	local TargetPosition = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
+        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
 
-	  if ItemsFolder then
-	    for _, Item in pairs(ItemsFolder:GetChildren()) do
-	      if Item:IsA("BasePart") or Item:IsA("Model") then
-	        if ItemsOnly2[Item.Name] then
-	          Item:PivotTo(TargetPosition)
-	        end
-	      end
-	    end
-	  end
-	end
-   end,
+        if ItemsFolder then
+            for _, Item in pairs(ItemsFolder:GetChildren()) do
+                if Item:IsA("BasePart") or Item:IsA("Model") then
+                    if Item.Name == 'Pink Oak Log' then
+                         if Item:IsA("Model") and Item.PrimaryPart then
+                            Item:SetPrimaryPartCFrame(TargetCFrame)
+                        elseif Item:IsA("BasePart") then
+                            Item.CFrame = TargetCFrame
+                        end
+                    end
+                end
+            end
+        end
+    end
 })
