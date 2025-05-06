@@ -40,7 +40,7 @@ local Items = Window:CreateTab("Телепорт Предметов", 4483362458
 
 --------------------------------------------------------------------------------------------- ТП ПО ЛОКАМ ---------------------------------------------------------------------------------------------
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Магазин 1",
    Callback = function()
         -- Check if the character and HumanoidRootPart exist before attempting to move
@@ -53,7 +53,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Магазин 2",
    Callback = function()
         -- Check if the character and HumanoidRootPart exist before attempting to move
@@ -66,7 +66,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "error",
    Callback = function()
         -- Check if the character and HumanoidRootPart exist before attempting to move
@@ -79,7 +79,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Грибной остров",
    Callback = function()
         -- Check if the character and HumanoidRootPart exist before attempting to move
@@ -92,7 +92,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Большое дерево",
    Callback = function()
         -- Check if the character and HumanoidRootPart exist before attempting to move
@@ -105,7 +105,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Трейд зона",
    Callback = function()
         -- Check if the character and HumanoidRootPart exist before attempting to move
@@ -118,7 +118,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Меторит 1 (ЕСЛИ ЕСТЬ)",
    Callback = function()
         local mine = workspace:FindFirstChild("small mine1", true)
@@ -137,7 +137,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Меторит 2 (ЕСЛИ ЕСТЬ)",
    Callback = function()
         local mine = workspace:FindFirstChild("small mine2", true)
@@ -156,7 +156,7 @@ local Button = tp:CreateButton({
    end,
 })
 
-local Button = tp:CreateButton({
+tp:CreateButton({
    Name = "Меторит 3 (ЕСЛИ ЕСТЬ)",
    Callback = function()
         local mine = workspace:FindFirstChild("small mine3", true)
@@ -180,7 +180,7 @@ local Button = tp:CreateButton({
 local autoFarmRocksEnabled = false
 local autoFarmRocksConnection = nil
 
-local Toggle = Main:CreateToggle({
+Main:CreateToggle({
    Name = "Авто Фарм Камней (НЕ ГОТОВ)",
    CurrentValue = false,
    Flag = "Toggle1",
@@ -210,7 +210,7 @@ local Toggle = Main:CreateToggle({
 local autoFarmCleanerEnabled = false
 local autoFarmCleanerConnection = nil
 
-local Toggle = Main:CreateToggle({
+Main:CreateToggle({
    Name = "Авто Фарм уборшик",
    CurrentValue = false,
    Flag = "Toggle2", -- Changed flag to be unique
@@ -268,7 +268,38 @@ local function TeleportItemsToPlayer()
     ['Spruce Log'] = true,
     ['Tin'] = true,
     ['Topaz'] = true,
-    ['Coal'] = true
+    ['Coal'] = true,
+    ['Charred Oak Log'] = true, -- Added missing items to the list
+    ['Metallic Oak Log'] = true,
+    ['Dark Oak Log'] = true,
+    ['Miniature Oak Tree'] = true,
+    ['Burning Log'] = true,
+    ['Mega Log'] = true,
+    ['Sparkle Time Acorn'] = true,
+    ['Copper'] = true,
+    ['Copper Bar'] = true,
+    ['Iron Bar'] = true,
+    ['Tungsten'] = true,
+    ['Tungsten Bar'] = true,
+    ['Lead'] = true,
+    ['Lead Bar'] = true,
+    ['Tin Bar'] = true,
+    ['Silver Bar'] = true,
+    ['Platinum Bar'] = true,
+    ['Gold'] = true,
+    ['Gold Bar'] = true,
+    ['Demonium'] = true,
+    ['Demonium Bar'] = true,
+    ['Holyum'] = true,
+    ['Holyum Bar'] = true,
+    ['Corrupted Bar'] = true,
+    ['True Bar'] = true,
+    ['False Bar'] = true,
+    ['Amythest'] = true,
+    ['Diamond'] = true,
+    ['Emerald'] = true,
+    ['Sparkle Time Coal'] = true,
+    ['Atom'] = true,
   }
 
   -- Calculate the target position based on the player's CFrame
@@ -294,7 +325,7 @@ end
 
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ВСЕХ ---------------------------------------------------------------------------------------------
 
-local Button = Items:CreateButton({
+Items:CreateButton({
    Name = "Тп предметы Все",
    Callback = function()
     TeleportItemsToPlayer()
@@ -304,1347 +335,87 @@ local Button = Items:CreateButton({
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ | ДЕРЕВЬЕВ ---------------------------------------------------------------------------------------------
 
 
-local Button = Items:CreateButton({
-   Name = "Oak Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
+local function createItemTeleportButton(itemName)
+    Items:CreateButton({
+       Name = itemName,
+       Callback = function()
+            local Character = game:GetService("Players").LocalPlayer.Character
+            local ItemsFolder = workspace:FindFirstChild("Items")
 
-        if not Character then return end
+            if not Character then
+                warn("Character not found for " .. itemName .. " TP.")
+                return
+            end
 
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+            local DistanceInFront = 5
+            local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
-        if not HumanoidRootPart then return end
+            if not HumanoidRootPart then
+                warn("HumanoidRootPart not found for " .. itemName .. " TP.")
+                return
+            end
 
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
+            local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
 
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Oak Log" then -- Corrected this line
-                        if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
+            if ItemsFolder then
+                for _, Item in pairs(ItemsFolder:GetChildren()) do
+                    if Item:IsA("BasePart") or Item:IsA("Model") then
+                        if Item.Name == itemName then
+                            if Item:IsA("Model") and Item.PrimaryPart then
+                                Item:SetPrimaryPartCFrame(TargetCFrame)
+                            elseif Item:IsA("BasePart") then
+                                Item.CFrame = TargetCFrame
+                            end
                         end
                     end
                 end
+            else
+                warn("Папка 'Items' не найдена в workspace for " .. itemName .. " TP.")
             end
         end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Charred Oak Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Charred Oak Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Metallic Oak Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Metallic Oak Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Pink Oak Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Pink Oak Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Dark Oak Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Dark Oak Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Miniature Oak Tree",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Miniature Oak Tree" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Spruce Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Spruce Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Burning Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Burning Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Mega Log",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Mega Log" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-local Button = Items:CreateButton({
-   Name = "Sparkle Time Acorn",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Sparkle Time Acorn" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-
---------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ | КАМЕНЬ И ТД ---------------------------------------------------------------------------------------------
-
-
-
-local Button = Items:CreateButton({
-   Name = "Coal",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Coal" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Copper",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Copper" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Copper Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Copper Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Iron",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Iron" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Iron Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Iron Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Tungsten",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Tungsten" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Sparkle Time Acorn",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Sparkle Time Acorn" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Tungsten Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Tungsten Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Lead",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Lead" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Lead Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Lead Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Tin",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Tin" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Tin Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Tin Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Silver",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Silver" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Silver Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Silver Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Platinum",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Platinum" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Platinum Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Platinum Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Gold",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Gold" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Gold Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Gold Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Demonium",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Demonium" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Demonium Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Demonium Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Holyum",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Holyum" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Holyum Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Holyum Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Corrupted Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Corrupted Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "True Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "True Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "False Bar",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "False Bar" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Amythest",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Amythest" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Ruby",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Ruby" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Sapphire",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Sapphire" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Topaz",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Topaz" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Diamond",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Diamond" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Emerald",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Emerald" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Sparkle Time Coal",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Sparkle Time Coal" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
-local Button = Items:CreateButton({
-   Name = "Atom",
-   Callback = function()
-        local Character = game:GetService("Players").LocalPlayer.Character
-        local ItemsFolder = workspace:FindFirstChild("Items")
-
-        if not Character then return end
-
-        local DistanceInFront = 5
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if not HumanoidRootPart then return end
-
-        local TargetCFrame = HumanoidRootPart.CFrame * CFrame.new(0, 0, -DistanceInFront)
-
-        if ItemsFolder then
-            for _, Item in pairs(ItemsFolder:GetChildren()) do
-                if Item:IsA("BasePart") or Item:IsA("Model") then
-                    if Item.Name == "Atom" then -- Corrected this line
-                         if Item:IsA("Model") and Item.PrimaryPart then
-                            Item:SetPrimaryPartCFrame(TargetCFrame)
-                        elseif Item:IsA("BasePart") then
-                            Item.CFrame = TargetCFrame
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
+    })
+end
+
+-- Create buttons for each item using the helper function
+createItemTeleportButton("Oak Log")
+createItemTeleportButton("Charred Oak Log")
+createItemTeleportButton("Metallic Oak Log")
+createItemTeleportButton("Pink Oak Log")
+createItemTeleportButton("Dark Oak Log")
+createItemTeleportButton("Miniature Oak Tree")
+createItemTeleportButton("Spruce Log")
+createItemTeleportButton("Burning Log")
+createItemTeleportButton("Mega Log")
+createItemTeleportButton("Sparkle Time Acorn")
+createItemTeleportButton("Coal")
+createItemTeleportButton("Copper")
+createItemTeleportButton("Copper Bar")
+createItemTeleportButton("Iron")
+createItemTeleportButton("Iron Bar")
+createItemTeleportButton("Tungsten")
+createItemTeleportButton("Tungsten Bar")
+createItemTeleportButton("Lead")
+createItemTeleportButton("Lead Bar")
+createItemTeleportButton("Tin")
+createItemTeleportButton("Tin Bar")
+createItemTeleportButton("Silver")
+createItemTeleportButton("Silver Bar")
+createItemTeleportButton("Platinum")
+createItemTeleportButton("Platinum Bar")
+createItemTeleportButton("Gold")
+createItemTeleportButton("Gold Bar")
+createItemTeleportButton("Demonium")
+createItemTeleportButton("Demonium Bar")
+createItemTeleportButton("Holyum")
+createItemTeleportButton("Holyum Bar")
+createItemTeleportButton("Corrupted Bar")
+createItemTeleportButton("True Bar")
+createItemTeleportButton("False Bar")
+createItemTeleportButton("Amythest")
+createItemTeleportButton("Ruby")
+createItemTeleportButton("Sapphire")
+createItemTeleportButton("Topaz")
+createItemTeleportButton("Diamond")
+createItemTeleportButton("Emerald")
+createItemTeleportButton("Sparkle Time Coal")
+createItemTeleportButton("Atom")
