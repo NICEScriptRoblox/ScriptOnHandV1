@@ -40,7 +40,7 @@ local Items = Window:CreateTab("Телепорт Предметов", 4483362458
 
 
 
---------------------------------------------------------------------------------------------- ТП ПО ЛОКАМ ---------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------- ТП ПО ЛОКАМ --------------------------------------------------------------------------------------------- 
 
 local Button = tp:CreateButton({
    Name = "Магазин 1",
@@ -277,8 +277,6 @@ local Button = Items:CreateButton({
 
 --------------------------------------------------------------------------------------------- ТП ПРЕДМЕТОВ ---------------------------------------------------------------------------------------------
 
---[[
-
 local Button = Items:CreateButton({
    Name = "Oak Log",
    Callback = function()
@@ -292,7 +290,7 @@ local Button = Items:CreateButton({
 
   	if not HumanoidRootPart then return end
 			
-	  local ItemsOnly = {
+	  local ItemsOnly1 = {
 	    ['Oak Log'] = true,
 	  }
 
@@ -301,7 +299,7 @@ local Button = Items:CreateButton({
 	  if ItemsFolder then
 	    for _, Item in pairs(ItemsFolder:GetChildren()) do
 	      if Item:IsA("BasePart") or Item:IsA("Model") then
-	        if ItemsOnly[Item.Name] then
+	        if ItemsOnly1[Item.Name] then
 	          Item:PivotTo(TargetPosition)
 	        end
 	      end
@@ -328,7 +326,7 @@ local Button = Items:CreateButton({
 
   	if not HumanoidRootPart then return end
 			
-	  local ItemsOnly = {
+	  local ItemsOnly2 = {
 	    ['Pink Oak Log'] = true,
 	  }
 
@@ -337,7 +335,7 @@ local Button = Items:CreateButton({
 	  if ItemsFolder then
 	    for _, Item in pairs(ItemsFolder:GetChildren()) do
 	      if Item:IsA("BasePart") or Item:IsA("Model") then
-	        if ItemsOnly[Item.Name] then
+	        if ItemsOnly2[Item.Name] then
 	          Item:PivotTo(TargetPosition)
 	        end
 	      end
@@ -346,4 +344,3 @@ local Button = Items:CreateButton({
 	end
    end,
 })
---]]
