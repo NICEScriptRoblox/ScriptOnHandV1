@@ -140,42 +140,42 @@ tp:CreateButton({
 tp:CreateButton({
    Name = "Меторит 2 (ЕСЛИ ЕСТЬ)",
    Callback = function()
-        local mine = рабочее пространство: FindFirstChild("маленький mine2", true)
-        локальный humanoidRootPart = игра.Игроки.Локальный игрок.Персонаж и игра.Игроки.Локальный игрок.Символ: FindFirstChild("HumanoidRootPart"), 
+        local mine = workspace:FindFirstChild("small mine2", true)
+        local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-        если мой и humanoidRootPart , то
-            local кирка = мой:FindFirstChild("Кирка", true),
-            если кирка , то
-                humanoidRootPart.CFrame = кирка.CFrame + Vector3.new(0, 2, 0)
+        if mine and humanoidRootPart then
+            local pickaxe = mine:FindFirstChild("Pickaxe", true)
+            if pickaxe then
+                humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
             else
-                warn("Кирка не найдена в маленькой шахте 2".)
+                warn("Pickaxe not found in small mine2.")
             end
         else
-            warn("маленькая шахта 2 или часть HumanoidRootPart не найдена для Меторит 2 TP.")
+            warn("small mine2 or HumanoidRootPart not found for Меторит 2 TP.")
         end
    end,
 })
 
-tp:createButton({
+tp:CreateButton({
    Name = "Меторит 3 (ЕСЛИ ЕСТЬ)",
-   обратный вызов = функция()
-        локальная шахта  = рабочее пространство: FindFirstChild("маленькая шахта3", true)
-        локальная часть humanoidRootPart = игра.Игроки.Локальный игрок.Персонаж и игра.Игроки.Локальный игрок.Символ: FindFirstChild("HumanoidRootPart"), 
+   Callback = function()
+        local mine = workspace:FindFirstChild("small mine3", true)
+        local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-        если мой и humanoidRootPart , то
-            local кирка = мой:FindFirstChild("Кирка", true),
-            если кирка , то
-                человеческийкорень.CFrame = кирка.CFrame + Vector3.new(0, 2, 0)
+        if mine and humanoidRootPart then
+            local pickaxe = mine:FindFirstChild("Pickaxe", true)
+            if pickaxe then
+                humanoidRootPart.CFrame = pickaxe.CFrame + Vector3.new(0, 2, 0)
             else
-                warn("Кирка не найдена в маленькой шахте3".)
+                warn("Pickaxe not found in small mine3.")
             end
         else
-            warn("маленькая шахта3 или часть HumanoidRootPart не найдена для Меторит 3 TP.")
+            warn("small mine3 or HumanoidRootPart not found for Меторит 3 TP.")
         end
    end,
-}) 
+})
 
----------------------------------------------------------------------------------------------  АФТО ФАРМ  ---------------------------------------------------------------- -----------------------------
+--------------------------------------------------------------------------------------------- АФТО ФАРМ ---------------------------------------------------------------------------------------------
 
 local autoFarmRocksEnabled = false
 local autoFarmRocksConnection = nil
@@ -187,10 +187,10 @@ Main:CreateToggle({
    Callback = function(Value)
         autoFarmRocksEnabled = Value
         if autoFarmRocksEnabled and autoFarmRocksConnection == nil then
-            autoFarmRocksConnection = game:GetService("RunService").Пошаговый:Connect(функция(),
-                если включена функция autoFarmRocksEnabled , то
-                    local mine = рабочее пространство:FindFirstChild("Mine", true)
-                    local humanoidRootPart = game.Игроки.Локальный игрок.Персонаж и игра.Игроки.Локальный игрок.Character:FindFirstChild("HumanoidRootPart")
+            autoFarmRocksConnection = game:GetService("RunService").Stepped:Connect(function()
+                if autoFarmRocksEnabled then
+                    local mine = workspace:FindFirstChild("Mine", true)
+                    local humanoidRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
                     if mine and humanoidRootPart then
                         local pickaxe = mine:FindFirstChild("Pickaxe", true)
@@ -300,65 +300,6 @@ local function TeleportItemsToPlayer()
     ['Emerald'] = true,
     ['Sparkle Time Coal'] = true,
     ['Atom'] = true,
-    ['Meteorite'] = true, -- Added Meteorite
-    ['Wheat'] = true, -- Added Wheat
-    ['Tomato'] = true, -- Added Tomato
-    ['Potato'] = true, -- Added Potato
-    ['Pineapple'] = true, -- Added Pineapple
-    ['Watermelon'] = true, -- Added Watermelon
-    ['Dominus Aureus'] = true, -- Added Dominus Aureus
-    ['Cowbell'] = true, -- Added Cowbell
-    ['Spellbook'] = true, -- Added Spellbook
-    ['Coin'] = true, -- Added Coin
-    ['Bucket'] = true, -- Added Bucket
-    ['Spork'] = true, -- Added Spork
-    ['Chest'] = true, -- Added Chest
-    ['Golden Chalice'] = true, -- Added Golden Chalice
-    ['Treasure Chest'] = true, -- Added Treasure Chest
-    ['Wooden Figurine'] = true, -- Added Wooden Figurine
-    ['Bronze Figurine'] = true, -- Added Bronze Figurine
-    ['Silver Figurine'] = true, -- Added Silver Figurine
-    ['Gold Figurine'] = true, -- Added Gold Figurine
-    ['Boot'] = true, -- Added Boot
-    ['Clown Fish'] = true, -- Added Clown Fish
-    ['Yellowfish'] = true, -- Added Yellowfish
-    ['Jellyfish'] = true, -- Added Jellyfish
-    ['Cyanfish'] = true, -- Added Cyanfish
-    ['Greenfish'] = true, -- Added Greenfish
-    ['Bluefish'] = true, -- Added Bluefish
-    ['Redfish'] = true, -- Added Redfish
-    ['Shark'] = true, -- Added Shark
-    ['Realistic Fish'] = true, -- Added Realistic Fish
-    ['Boombox -1'] = true, -- Added Boombox -1
-    ['Birthday Boombox 1'] = true, -- Added Birthday Boombox 1
-    ['Boombox0'] = true, -- Added Boombox0
-    ['Boombox1'] = true, -- Added Boombox1
-    ['Boombox10'] = true, -- Added Boombox10
-    ['Boombox11'] = true, -- Added Boombox11
-    ['Boombox12'] = true, -- Added Boombox12
-    ['Boombox13'] = true, -- Added Boombox13
-    ['Boombox14'] = true, -- Added Boombox14
-    ['Boombox15'] = true, -- Added Boombox15
-    ['Boombox2'] = true, -- Added Boombox2
-    ['Boombox3'] = true, -- Added Boombox3
-    ['Boombox4'] = true, -- Added Boombox4
-    ['Boombox5'] = true, -- Added Boombox5
-    ['Boombox6'] = true, -- Added Boombox6
-    ['Boombox7'] = true, -- Added Boombox7
-    ['Boombox8'] = true, -- Added Boombox8
-    ['Boombox9'] = true, -- Added Boombox9
-    ['Christmas Boombox 1'] = true, -- Added Christmas Boombox 1
-    ['Shop Boombox 1'] = true, -- Added Shop Boombox 1
-    ['Space Boombox 1'] = true, -- Added Space Boombox 1
-    ['Spring Boombox 1'] = true, -- Added Spring Boombox 1
-    ['Rusted Boombox 1'] = true, -- Added Rusted Boombox 1
-    ['Purbl Boombox 1'] = true, -- Added Purbl Boombox 1
-    ['Purbl Boombox 2'] = true, -- Added Purbl Boombox 2
-    ['Halloween Boombox 1'] = true, -- Added Halloween Boombox 1
-    ['Eepy Boombox 3'] = true, -- Added Eepy Boombox 3
-    ['Eepy Boombox 2'] = true, -- Added Eepy Boombox 2
-    ['Eepy Boombox 1'] = true, -- Added Eepy Boombox 1
-    ['Developer Boombox 1'] = true, -- Added Developer Boombox 1
   }
 
   -- Calculate the target position based on the player's CFrame
@@ -368,15 +309,11 @@ local function TeleportItemsToPlayer()
     for _, Item in pairs(ItemsFolder:GetChildren()) do
       if Item:IsA("BasePart") or Item:IsA("Model") then
         if ItemsOnly[Item.Name] then
-          if Item:IsA("Model") then
-            local handle = Item:FindFirstChild("Handle")
-            if handle and handle:IsA("BasePart") then
-              handle.CFrame = TargetCFrame
-            elseif Item.PrimaryPart then
+          -- Use :SetPrimaryPartCFrame() for Models, :SetCFrame() for BaseParts
+          if Item:IsA("Model") and Item.PrimaryPart then
               Item:SetPrimaryPartCFrame(TargetCFrame)
-            end
           elseif Item:IsA("BasePart") then
-            Item.CFrame = TargetCFrame
+              Item.CFrame = TargetCFrame
           end
         end
       end
@@ -431,13 +368,8 @@ local function createItemTeleportButton(itemName)
                 for _, Item in pairs(ItemsFolder:GetChildren()) do
                     if Item:IsA("BasePart") or Item:IsA("Model") then
                         if Item.Name == itemName then
-                            if Item:IsA("Model") then
-                                local handle = Item:FindFirstChild("Handle")
-                                if handle and handle:IsA("BasePart") then
-                                    handle.CFrame = TargetCFrame
-                                elseif Item.PrimaryPart then
-                                    Item:SetPrimaryPartCFrame(TargetCFrame)
-                                end
+                            if Item:IsA("Model") and Item.PrimaryPart then
+                                Item:SetPrimaryPartCFrame(TargetCFrame)
                             elseif Item:IsA("BasePart") then
                                 Item.CFrame = TargetCFrame
                             end
